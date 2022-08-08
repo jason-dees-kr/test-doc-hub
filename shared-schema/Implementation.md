@@ -1,4 +1,4 @@
-# Shared Schema
+# Shared Schema Implementation
 
 1. Create a shared library for widely used scenarios
 	- Start with start-navigate, page-view, data-classification, errors, any other widely used, simple scenario
