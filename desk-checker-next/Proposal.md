@@ -31,4 +31,4 @@ I will be ignoring this since we can't tool our way out of this.
 1. DC tool will be modified to accept a jira ticket id, and a payload body. 
 	- Query the above service to get requirements schema
 	- Potential to save different validation attempts for posterity (payload and RS at submition time)
-	- Would be able to see what payloads passed/did not pass/if it passed at all
+	- Pull up historical record of previous validation attempts
