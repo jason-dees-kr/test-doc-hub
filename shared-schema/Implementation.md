@@ -1,5 +1,6 @@
 # Shared Schema Implementation
 
+1. Update data dictionary to display compiled schema
 1. Create a shared library for widely used scenarios
 	- Start with start-navigate, page-view, data-classification, errors, metaData any other widely used, simple schemas
 	- Create a [fake schema library](https://github.com/krogertechnology/schema-registry/pull/1809)
@@ -7,6 +8,9 @@
 	- Implement the shared schema in the app schema libraries
 		- We can do a schema at a time
 		- We do not have to cutover all at once
+1. Create a SR script to create a 'base' SDK
+1. Create a tool for SDR generation
+	- 1 scenario at a time. The app library it exists in, its fields
 1. Identify other high priority scenarios
 	1. Determine how different apps use them, like add-to-cart
 	1. Unify how those are defined
@@ -17,4 +21,3 @@
 		- Shared properties can be 'overridden' inside apps' schemas by declaring them again inside the composed schema
 			- One property that will always be overriden will be `schemaVersion`
 1. Continue process for all remaining scenarios
- 
