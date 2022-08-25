@@ -32,3 +32,10 @@ I will be ignoring this since we can't tool our way out of this.
 	- Query the above service to get requirements schema
 	- Potential to save different validation attempts for posterity (payload and RS at submition time)
 	- Pull up historical record of previous validation attempts
+1. Maybe use the mobile app's settings for this somehow
+	- can we add it to all requests going out?
+	- Do a filter somehow in the validation service/stage clickstream
+	- Specificity for getting it 100% correct, but it might work
+		- Dev forgets to undo that work and spam our validation service
+1. Use charles to capture/intercept the request and attach the jira id to the header in the request 
+1. What is ab test and how can we use them?
