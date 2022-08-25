@@ -48,3 +48,7 @@ They have definitions for breaking and non-breaking changes. Kroger could adopt 
 ## [LinkedIn](https://docs.microsoft.com/en-us/linkedin/shared/breaking-change-policy?view=li-lms-2022-08)
 
 LinkedIn announces when a breaking change will be introduced and how to migrate. They do not announce non-breaking changes.
+
+## [Index Exchange](https://kb.indexexchange.com/rti_providers/reporting/breaking_change_policy_rti_providers.htm)
+
+Their policy is to support breaking changes for 60 days, like just under 2 months. The shortest period yet.
