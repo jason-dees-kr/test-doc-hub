@@ -22,6 +22,8 @@ Information would include:
 	- Unless otherwise noted, this change will have to be done over a long period of time
 	- There can be exceptions for stuff like PII/PHI data, immediate reporting needs delegated from on-high
 
+This would apply mostly to scaled apps, but we can try to apply it to banner too.
+
 ### One Scenario Version 
 
 This implies communication of the change with the information listed above.
@@ -35,6 +37,8 @@ This does not introduce a breaking change immediately. We make the change initia
 - __Removing enumerated value__: Mark value as deprecated. Code gen will provide warnings in the apps around this
 - __Renaming enumerated value__: Add correctly named value, mark incorrectly named value as deprecated. Remove incorrect value after time period has passed.
 - __Changing property type__: pfffttttt who knows don't do this. How do we change a property type and keep the same name as the previous property?
+	- make a new property with a similar enough name
+	- deprecate old property
 - __Remove Scenario__: Mark entire scenario as deprecated. Remove after deprecation period has passed.
 
 ### Multiple Versions in SDK
