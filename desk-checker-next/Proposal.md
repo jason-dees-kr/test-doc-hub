@@ -4,6 +4,12 @@
 
 With the Desk Checker (DC) tool we have issues with the requirements schema and collecting analytics payloads. 
 
+### The Act of Desk Checking
+
+With requirements schema, there is no real need to have the implementation team do any of the desk checking work. We need to enable a way for developers or SDETs to take their captured payloads and compare them against a provided requirements schema, identified by a JIRA ticket id and a requirement ID listed in the JIRA ticket.
+
+We also need to document that the desk check was done, and the result of the desk check.
+
 ### Requirements Schema
 
 The requirements schema is created in Data Dictionary (DD), downloaded, then attached to the JIRA ticket. There are issues with when a requirements schema should be created, how to keep it updated with the requirements in the ticket, and updated with Schema Registry (SR) updates. 
