@@ -16,11 +16,11 @@ The schema in SR can also be updated based on another ticket as well. DC would, 
 
 Developers seems to have an issue with collecting JSON payloads. They mostly don't know how to do it, so we would need guides to show them how to collect payloads from the browser, from Charles (native mobile), or from some other way of inspecting payloads from mobile devices.
 
-I will be ignoring this since we can't tool our way out of this.
+Ground Kontrol made an app that intercepts calls from clients and have developers send the payload to a validation service.
 
 ## Proposed Solution
 
-1. Service that saves a requirements schema (RS) based on JIRA ticket
+1. Service that saves one or more requirements schemas (RS) based on JIRA ticket
 	- Can access requirements schema from URL
 	- Can update requirements schema in one place as requirements change
 	- Needs authentication and authorization for a user to modify a requirements schema
@@ -28,14 +28,19 @@ I will be ignoring this since we can't tool our way out of this.
 		- We would have to keep schema registry from running all the CI/DI processes on these
 		- Requirements schema would stay up to date with the latest version in SR
 	- Requirements Schema based on JIRA ticket so it's easily findable
-1. DC tool will be modified to accept a jira ticket id, and a payload body. 
-	- Query the above service to get requirements schema
-	- Potential to save different validation attempts for posterity (payload and RS at submition time)
-	- Pull up historical record of previous validation attempts
-1. Maybe use the mobile app's settings for this somehow
-	- can we add it to all requests going out?
-	- Do a filter somehow in the validation service/stage clickstream
-	- Specificity for getting it 100% correct, but it might work
-		- Dev forgets to undo that work and spam our validation service
-1. Use charles to capture/intercept the request and attach the jira id to the header in the request 
+	- Service can accept a POSTed payload and return whether it passes validation 
+	- Service can save each payload validation
+	- Service can return the status of attempted validations for a JIRA ticket
+1. Use charles to capture/intercept the request and attach the jira id to the header in the request to validate the payload against a requirements schema
 1. What is ab test and how can we use them?
+
+### Break down
+1. Web service that accepts a RS and a payload and returns validation status as a HTTP Response body
+	- We basically have this today but at [the desk checker](https://touchstone.katssx-prod.kpsazc.dgtl.kroger.com/desk-checker) so this provides little value
+1. Service can save one more more RS tied to a jira ticket
+	- Service can return validation status of a payload based on a RS
+	- Do we need authentication for this?
+		- We only want approved people uploading RS
+	- Start adding value here
+1. Service saves each payload submitted against a RS
+	- We can query service for validation results by JIRA ticket
