@@ -212,6 +212,7 @@ _Models-1_
 
 _Models-2_ 
 - Page-View V2 (scenario that triggered the version bump is flagged as deprecated)
+- Add-to-Cart V1 (scenario that triggered the version bump is flagged as deprecated)
 - Add-to-List V4 (scenario that triggered the version bump is flagged as deprecated)
 
 _Models_
@@ -227,6 +228,8 @@ This would be an additive process until we decide that a scenario is outside the
 The Models import would always be the latest. This would cause the app to not build with breaking changes since the Models import would always have the latest, possibly breaking, changes. Developers would then explicitly point to a Models 1 import if they want to eliminate those breaking changes, and they would get the deprecation warnings at that time for the scenarios that are out of date.
 
 A developer has a file that contains Models. They have a breaking change to the scenario. They want to point to Models-X-1 to play the migration work later.  That can add that import and specify for that specific scenario to use that import until they are ready to play the migration work.
+
+Models library versions would be based off of Schema Registry major version.
 
 #### What do we need to make this work
 
