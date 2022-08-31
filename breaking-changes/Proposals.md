@@ -242,13 +242,19 @@ A developer has a file that contains Models. They have a breaking change to the 
 
 Models library versions would be based off of Schema Registry major version.
 
+After the d
+
 #### What do we need to make this work
 
-Scenario Poet will need to generate multiple versions of our current concept of SDKs and package them together.
+Scenario Poet will need to generate multiple versions of our current concept of SDKs and package them together. 
 
-We could use scenario poet to generate latest (Models) and then generate Models-1 that would only contain the scenarios with versions not in Models.
+Scenario Poet would need to diff the latest version against each past version to generate the diffed deprecated models libraries.
+
+Scenario Poet would need to crawl back in Schema Registry versions of that app schema library until there are no active, deprecated scenarios to generate.
 
 Our first major version bump will make a Models-X, where X is some major version, probably pulled from Schema Registry's version.
+
+When major version bumping in Schema Registry, we would have to mark the previous latest version as deprecated. Do we mark all versions of that major deprecated, or just the latest?
 
 #### Advantages 
 
@@ -257,6 +263,8 @@ We can keep nearly all code the same. This would cause no breaking changes to an
 We get warnings around what is deprecated.
 
 We get errors around what needs to be fixed.
+
+We still only ever maintain one version of a scenario at a time, the latest.
 
 #### Disadvantages
 
