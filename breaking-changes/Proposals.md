@@ -242,8 +242,6 @@ A developer has a file that contains Models. They have a breaking change to the 
 
 Models library versions would be based off of Schema Registry major version.
 
-After the d
-
 #### What do we need to make this work
 
 Scenario Poet will need to generate multiple versions of our current concept of SDKs and package them together. 
@@ -254,7 +252,7 @@ Scenario Poet would need to crawl back in Schema Registry versions of that app s
 
 Our first major version bump will make a Models-X, where X is some major version, probably pulled from Schema Registry's version.
 
-When major version bumping in Schema Registry, we would have to mark the previous latest version as deprecated. Do we mark all versions of that major deprecated, or just the latest?
+When major version bumping in Schema Registry, we would have to mark the previous latest version as deprecated. Do we mark all versions of that major deprecated, or just the latest? We can, as a matter of policy, mark _every_ previous version as deprecated, but only treat majors as special.
 
 #### Advantages 
 
