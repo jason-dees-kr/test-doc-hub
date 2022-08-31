@@ -148,34 +148,102 @@ _SDK 2.0.1_
 
 After a certain specified date unique to each deprecated scenario, the deprecated scenarios will be removed from the SDK. I am unsure if this would constitute a major version change.
 
+We don't need to deprecate previous versions, and could maintain them indefinitely.
+
 #### What do we need to make this work
 
 We would need to update Scenario Poet to generate all models with the `-V#` appended to the end. We cannot just have a `StartNavigate` scenario anymore, since if we bump to the next major, all implementations will be broken. 
 
 I assume we would not want to keep previous major versions supported, so we would only apply all updates to the latest major of each scenario.
 
-We don't have to worry about marking specific fields as deprecated, we would do the latest version of the previous major as deprecated.
+We don't have to worry about marking specific properties or values as deprecated, we would do the latest version of the previous major as deprecated.
+
+Every scenario version would have to have its major version explicit as part of the name.
+
+Update scenario poet to traverse previous versions of scenarios to pull in active, but deprecated versions.
 
 #### Advantages 
 
+Entire major versions of scenarios would be deprecated, so we would not have to track specific properties or values we care about.
+
+Every object would be major versioned at that. We would need to support Add-to-Cart-V1's Product-V1 and Add-to-Cart-V2's Product-V2, for example.
+
 #### Disadvantages
+
+Changing the model names to be explicitly versioned _is_ a breaking change. We would have to support leaving current versions versionless, and new versions versioned, which is a recording keeping problem.
+
+It would be easy for a developer to autocomplete to victory and implement an old version of a scenario that is still in the SDK.
+
+To update to the latest version, they would have to go through and update every explicit version number, and the breaking change. This would be a tedious process.
 
 ---
 
-### One SDK With Multiple Versioned SDKs
+### *One SDK With Multiple Versioned SDKs*
+
+Our SDKs would contain essentially namespaced groups of scenarios and their associated models.
+
+With the sample SDK below
+
+_SDK 1.2.3_
+
+_Models_
+- Start-Navigate V1
+- Page-View V2
+- Add-to-Cart V1
+- Add-to-List V3
+
+_SDK 2.0.6_ 
+
+_Models-1_ 
+- Page-View V2 (scenario that triggered the version bump is flagged as deprecated)
+- Add-to-Cart V1 (scenario that triggered the version bump is flagged as deprecated)
+
+_Models_
+- Start-Navigate V1
+- Page-View V3
+- Add-to-Cart V2
+- Add-to-List V3
+
+_SDK 3.0.6_ 
+
+_Models-1_ 
+- Page-View V2 (scenario that triggered the version bump is flagged as deprecated)
+- Add-to-Cart V1 (scenario that triggered the version bump is flagged as deprecated)
+
+_Models-2_ 
+- Page-View V2 (scenario that triggered the version bump is flagged as deprecated)
+- Add-to-List V4 (scenario that triggered the version bump is flagged as deprecated)
+
+_Models_
+- Start-Navigate V1
+- Page-View V3
+- Add-to-Cart V2
+- Add-to-List V4
+
+we would have two updates, but the every scenario in Models 1 would be deprecated, since the entire Models 1 is deprecated. Each version of the SDK would contain 1 or more Models libraries with the latest Models not having a version, but the older models having a version, allowing us to 'namespace' the model differences. Updating the SDK will update every scenario, since the latest versions will be in the Models namespace. BUT breaking changes would still cause issues. The latest version will be incompatible with the implemented version so the developer can update the implementation, or change the import namespace to Models-X, where X is the previous version.
+
+This would be an additive process until we decide that a scenario is outside the deprecation window and we would remove the expired model and its namespace.
+
+The Models import would always be the latest. This would cause the app to not build with breaking changes since the Models import would always have the latest, possibly breaking, changes. Developers would then explicitly point to a Models 1 import if they want to eliminate those breaking changes, and they would get the deprecation warnings at that time for the scenarios that are out of date.
+
+A developer has a file that contains Models. They have a breaking change to the scenario. They want to point to Models-X-1 to play the migration work later.  That can add that import and specify for that specific scenario to use that import until they are ready to play the migration work.
 
 #### What do we need to make this work
 
-#### Advantages 
+Scenario Poet will need to generate multiple versions of our current concept of SDKs and package them together.
 
-#### Disadvantages
+We could use scenario poet to generate latest (Models) and then generate Models-1 that would only contain the scenarios with versions not in Models.
 
----
-
-### One SDK Built From Chosen Versions of Scenarios
-
-#### What do we need to make this work
+Our first major version bump will make a Models-X, where X is some major version, probably pulled from Schema Registry's version.
 
 #### Advantages 
 
+We can keep nearly all code the same. This would cause no breaking changes to any current app. For future breaking changes, the developers would have to fix the break, or explicitly import the old Models library(ies).
+
+We get warnings around what is deprecated.
+
+We get errors around what needs to be fixed.
+
 #### Disadvantages
+
+A breaking change is still a breaking change. The path to fix it is very straightforward, but front end developers cannot seemlessly update their SDKs. Possibly the biggest downside.
