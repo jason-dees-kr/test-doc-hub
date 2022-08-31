@@ -195,8 +195,8 @@ _Models_
 _SDK 2.0.6_ 
 
 _Models-1_ 
-- Page-View V2 (scenario that triggered the version bump is flagged as deprecated)
-- Add-to-Cart V1 (scenario that triggered the version bump is flagged as deprecated)
+- Page-View V2 `(scenario that triggered the version bump is flagged as deprecated)`
+- Add-to-Cart V1 `(scenario that triggered the version bump is flagged as deprecated)`
 
 _Models_
 - Start-Navigate V1
@@ -207,13 +207,24 @@ _Models_
 _SDK 3.0.6_ 
 
 _Models-1_ 
-- Page-View V2 (scenario that triggered the version bump is flagged as deprecated)
-- Add-to-Cart V1 (scenario that triggered the version bump is flagged as deprecated)
+- Page-View V2 `(scenario that triggered the version bump is flagged as deprecated)`
+- Add-to-Cart V1 `(scenario that triggered the version bump is flagged as deprecated)`
 
 _Models-2_ 
-- Page-View V2 (scenario that triggered the version bump is flagged as deprecated)
-- Add-to-Cart V1 (scenario that triggered the version bump is flagged as deprecated)
-- Add-to-List V4 (scenario that triggered the version bump is flagged as deprecated)
+- Add-to-List V4 `(scenario that triggered the version bump is flagged as deprecated)`
+
+	`Models-2 is missing Page-View and Start-Navigate because the major version that caused Models-1 to be deprecated was Page-View and Start-Navigate, thus those two scenarios would be same as in Models`
+
+_Models_
+- Start-Navigate V1
+- Page-View V3
+- Add-to-Cart V2
+- Add-to-List V4
+
+_SDK 3.0.7_
+
+_Models-2_ 
+- Add-to-List V4 `(scenario that triggered the version bump is flagged as deprecated)`
 
 _Models_
 - Start-Navigate V1
