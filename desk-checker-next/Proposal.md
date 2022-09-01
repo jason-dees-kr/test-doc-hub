@@ -51,7 +51,7 @@ Ground Kontrol made an app that intercepts calls from clients and have developer
 	- We need the full formed payload to go through telemetry to intercept it
 	- How do we have 1 relay for both V0 and V1?
 	- Also useful for Ground Kontrol's tool
-	- Could steal ground kontrol's implementation
+	- Could steal ground kontrol's implementation for relay interception
 1. Add a switch board view in the app that displays data flowing through telemetry relays
 	- Filter and search the analytics relay payloads
 1. Add ability to download data from the display in the switchboard
