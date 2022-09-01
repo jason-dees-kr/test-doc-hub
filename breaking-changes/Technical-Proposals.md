@@ -178,7 +178,7 @@ To update to the latest version, they would have to go through and update every 
 
 ---
 
-### *One SDK With Multiple Versioned SDKs*
+### *One SDK With Multiple Versioned Libraries*
 
 Our SDKs would contain essentially namespaced groups of scenarios and their associated models.
 
