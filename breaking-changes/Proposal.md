@@ -13,9 +13,13 @@ What is a good policy for communicating and implementing breakin changes to our 
 1. Local update to a schema in Schema Registry
 1. Open PR for the update
 1. Review PR for the update
-1. Merge PR for the update
-1. Update SDK (either by hand (banner V0), or generated (everybody else))
+	- Communication should be prepared here
+	- Maybe communication gets launched here?
+1. Merge PR for the update into Schema Registry
+	- It's essentially 'live' at this point
+1. Update SDK (either by hand [banner V0], or generated [everybody else])
 1. Update app with latest version of SDK
+	- This is where breaking changes would stop the deployment of the app
 1. Fix issues that were caused by the SDK update in the app
 
 ## Classic Proposed Solution

@@ -46,11 +46,23 @@ Ground Kontrol made an app that intercepts calls from clients and have developer
 
 ### Break down
 
+#### Switchboard payload capture (iOS at least)
+1. When in debug mode, SDK sends a fully formed scenario + metadata to a debug telemetry relay to nowhere. 
+	- We need the full formed payload to go through telemetry to intercept it
+	- How do we have 1 relay for both V0 and V1?
+	- Also useful for Ground Kontrol's tool
+	- Could steal ground kontrol's implementation
+1. Add a switch board view in the app that displays data flowing through telemetry relays
+	- Filter and search the analytics relay payloads
+1. Add ability to download data from the display in the switchboard
+1. Teach DA Implementation how to download app builds from Firebase, access the Switchboard, access the payload list, and download payloads.
+
 #### Ground Kontrol's Tool
 1. Update the analytics SDKs (iOS and Android) to change when metadata is attached to payloads in telemeter
 	- Right now this is done inside the SDKs themselves
 	- Would we need to move it to scenario instantiation or can we do it in the relay? (must be at earliest the relay)
 	- If we cannot do it in the relay, how can we capture metadata information via the tool?
+	- In debug mode, can we send a fully formed payload (scenario + metadata) to a debug relay?
 1. Tool needs to have the ability to download a json payload
 1. Eventually figure out a mechanism for sending a payload to a service to be deskchecked (The Web Service item 2)
 1. See how we can modify the web SDK to hook into the tool
