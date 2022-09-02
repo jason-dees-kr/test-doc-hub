@@ -126,6 +126,8 @@ Front end teams can choose when they want to migrate at their own time, potentia
 
 We could be maintaining multiple versions of one or more scenarios at the same time.
 
+Front end teams would have to know what models are currently in their SDK, like keep track of a manifest of some sort.
+
 ---
 
 ### One SDK With Multiple Versioned Models
@@ -250,6 +252,8 @@ Scenario Poet would need to diff the latest version against each past version to
 
 Scenario Poet would need to crawl back in Schema Registry versions of that app schema library until there are no active, deprecated scenarios to generate.
 
+On major version bumps we would need: a reason for the major version bump, a date that the old version will disappear. 
+
 Our first major version bump will make a Models-X, where X is some major version, probably pulled from Schema Registry's version.
 
 When major version bumping in Schema Registry, we would have to mark the previous latest version as deprecated. Do we mark all versions of that major deprecated, or just the latest? We can, as a matter of policy, mark _every_ previous version as deprecated, but only treat majors as special.
@@ -267,3 +271,7 @@ We still only ever maintain one version of a scenario at a time, the latest.
 #### Disadvantages
 
 A breaking change is still a breaking change. The path to fix it is very straightforward, but front end developers cannot seemlessly update their SDKs. Possibly the biggest downside.
+
+The developer will have to know what library version to import. If `Models` is broken, how do they know to go to `Models-5` and not `Models-4`? How do they know `Models-5` even exists?
+
+Once a models library is removed from the SDK after the deprecation expiration data passes, there will be a build error for any import reference to that library.
