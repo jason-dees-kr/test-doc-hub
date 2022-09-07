@@ -14,12 +14,15 @@ What is a good policy for communicating and implementing breakin changes to our 
 1. Open PR for the update
 1. Review PR for the update
 	- Communication should be prepared here
-	- Maybe communication gets launched here?
+	- Communication gets launched here?
+	- Need to communicate to downstream consumers (adobe and others), front end teams, report consumers, report creators, who else?
+		- We need a way to track this. We are very myopic towards Adobe currently, and also probably our most important consumer. 
 1. Merge PR for the update into Schema Registry
 	- It's essentially 'live' at this point
 1. Update SDK (either by hand [banner V0], or generated [everybody else])
 1. Update app with latest version of SDK
 	- This is where breaking changes would stop the deployment of the app
+	- Front end teams would do this
 1. Fix issues that were caused by the SDK update in the app
 
 ## Classic Proposed Solution
