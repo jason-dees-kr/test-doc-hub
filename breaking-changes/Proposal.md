@@ -12,11 +12,36 @@ What is a good policy for communicating and implementing breakin changes to our 
 
 1. Local update to a schema in Schema Registry
 1. Open PR for the update
-1. Review PR for the update
+1. Review PR for the update ***New for 2022/9/7***
 	- Communication should be prepared here
 	- Communication gets launched here?
 	- Need to communicate to downstream consumers (adobe and others), front end teams, report consumers, report creators, who else?
 		- We need a way to track this. We are very myopic towards Adobe currently, and also probably our most important consumer. 
+	- Automatic change management through schema registry
+		- Ignoring banner, we can use the SDR to message application teams when a change comes through that affects them.
+			- When we make a change to a schema file, we would need to determine what schema app libraries reference that schema file some how.
+				- Update start-navigate class -> we would trace that reference to all app libraries that use it -> communicate out the change
+				- Update an attribute schema -> trace reference to data types, property groups, classes, and scenarios in app libraries -> communicate out the change
+			- This information gets generated on PR creation and put into the PR as a comment
+				- App team name
+			- Need to track downstream consumers - via a manifest like
+				- Who it is
+				- Some manifest file for each downstream consumer? Use a consumer file that tracks a specific versioned id of a scenario "/banner/scenarios/filter-and-sort/1.5.2"
+				- Allows consumers to specify multiple versions of the same scenarios
+				- They would only be able to list inherited classes and app scenarios and metadata
+				- The consumer would have to maintain and update their consumer list 
+				- The consumer would get notified of _every_ change
+				- They would get alert when the version in their manifest file is no longer the latest version
+				- The consumer would have to support a wide range of versions due to app update cycles. Data producers will continute to use old apps with old, officialy expired and deprecated versions.
+			- If we use a manifest consumer file for Banner Front End teams, we would have a list of scenarios that front end teams care about
+				- Other app teams wouldn't need this except maybe In-Stock. Most other apps will be a much smaller front end team.
+				- Who fills this out?
+				- How can we automate this?
+				- Who maintains this? Analyst? Implementation? Front End teams?
+					- Implementation could build this list up from tickets going forward, but not build it initially
+					- Track scenario name, and page name/component name combination
+				- How do we get front end teams to declare responsilibty or interest in scenarios?
+				- This would not track specific call sites and instances of scenario implementations, only declares interest.
 1. Merge PR for the update into Schema Registry
 	- It's essentially 'live' at this point
 1. Update SDK (either by hand [banner V0], or generated [everybody else])
