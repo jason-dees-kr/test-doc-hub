@@ -118,11 +118,15 @@ This solution consists of 1 'current' SDK per app per platform at a time. The SD
 
 When a front end team tries to update to the latest version of the SDK, the app will fail to build. They will have the option to rollback to the previous version, or fix the breaking changes that would be specified in our communication.
 
+The 'deprecation date' would basically be the date that reports would switch over to using the latest models.
+
 ### What do we need to make this work
 
-A change management communication system.
+A change management communication system. Breaking changes would go live the moment they are merged into Schema Registry. 
 
-Update SDK generation to major/minor/patch bump properly.
+Update SDK generation would have to major/minor/patch bump properly.
+
+This would work best with by versioning app libraries. So KHX would have a different version than Demeter, which would be different than In-Stock. Probably some form of text file containing version information somewhere in the dist directory.
 
 ### Advantages
 
