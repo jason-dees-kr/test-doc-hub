@@ -112,6 +112,36 @@ Once a models library is removed from the SDK after the deprecation expiration d
 
 ---
 
+### Don't Do Anything
+
+This solution consists of 1 'current' SDK per app per platform at a time. The SDK contains the latest versions of all models at generation time. We would not have any technical updates to our SDK generation. It would simply generate the latest SDK with the latest models. Our change management process would be required for communication and any deprecation information around the changes.
+
+When a front end team tries to update to the latest version of the SDK, the app will fail to build. They will have the option to rollback to the previous version, or fix the breaking changes that would be specified in our communication.
+
+### What do we need to make this work
+
+A change management communication system.
+
+Update SDK generation to major/minor/patch bump properly.
+
+### Advantages
+
+KAT literally has to do nothing different.
+
+We still need to have all the change management communciation infrastructure for all these other solutions.
+
+Least technically complicated. We have 1 SDK with 1 set of the latest versions of the models. The previous versions of the SDKs still exist in their previous form.
+
+### Disadvantages
+
+We would lose deprecation warnings in the apps letting developers know there are changes coming. We would not retroactively update old apps.
+
+Developers would not be able to update to the latest version of the SDK without first fixing any breaking changes. They would be stuck on whatever version they are on.
+
+We do not currently remove old versions of the SDKs, so the SDK version they are on will continue to function and be accessible indefinitely. This is true of every other solution though.
+
+---
+
 ### One SDK With Multiple Versioned Models 
 
 Here we would have one SDK, but the SDK would come with explicitly major versions of the scenarios. Each previous version would be marked deprecated with all the information we decide.
