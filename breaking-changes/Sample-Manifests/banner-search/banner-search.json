@@ -1,0 +1,26 @@
+{
+  "name": "banner-search",
+  "description": "Banner SDK - iOS",
+  "version": "$VERSION",
+  "schemaRoot": "banner",
+  "schemas": [
+    {
+      "name": "filter-and-sort",
+      "locations": [
+        {
+          "pageName": "app:home",
+          "componentName": "home screen"
+        }
+      ]
+    },
+    {
+      "name": "internal-search",
+      "locations": [
+        {
+          "pageName": "app:home",
+          "componentName": "home screen"
+        }
+      ]
+    }
+  ]
+}

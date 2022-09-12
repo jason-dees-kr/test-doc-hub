@@ -1,0 +1,13 @@
+{
+  "name": "sdk-banner-ios",
+  "description": "Banner SDK - iOS",
+  "version": "$VERSION",
+  "schemas": [
+    {
+      "id": "/banner/scenarios/filter-and-sort/1.5.2"
+    },
+    {
+      "id": "/banner/scenarios/filter-and-sort/1.6.3"
+    }
+  ]
+}
